@@ -1,0 +1,619 @@
+/* ============================================================
+   דף נחיתה — ברית | משפחת נדיר
+   פלטה: בז' חול + נחושת | Mobile-First | RTL
+   ============================================================ */
+
+:root {
+  /* צבעים */
+  --sand:        #FAF6F0;
+  --sand-deep:   #F0E6D8;
+  --sand-line:   #E4D6C4;
+  --surface:     #FFFDFA;
+  --ink:         #3A2E26;
+  --muted:       #8A7A6D;
+  --copper:      #B0764A;
+  --copper-deep: #8C5A38;
+  --copper-soft: rgba(176, 118, 74, 0.10);
+  --danger:      #A6402F;
+  --success:     #4E7A52;
+
+  /* טיפוגרפיה */
+  --font-display: 'Frank Ruhl Libre', 'David Libre', Georgia, 'Times New Roman', serif;
+  --font-body:    'Assistant', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* מרווחים ועיצוב */
+  --radius:    18px;
+  --radius-sm: 12px;
+  --shadow:    0 10px 30px rgba(90, 62, 40, 0.07);
+  --shadow-lg: 0 14px 40px rgba(90, 62, 40, 0.12);
+  --page-pad:  20px;
+}
+
+/* ---------- בסיס ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+/* חובה: אלמנטים עם display מפורש (flex/grid) מתעלמים מ-[hidden] בלעדי זה */
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background-color: var(--sand);
+  background-image:
+    radial-gradient(circle at 12% 8%,  rgba(176, 118, 74, 0.09), transparent 45%),
+    radial-gradient(circle at 88% 92%, rgba(176, 118, 74, 0.07), transparent 42%),
+    linear-gradient(180deg, var(--sand) 0%, var(--sand-deep) 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0;
+}
+
+p { margin: 0; }
+
+.page {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 40px var(--page-pad) 48px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- כרטיס ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--sand-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 22px;
+  margin-bottom: 22px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  text-align: center;
+  padding: 8px 4px 4px;
+  margin-bottom: 26px;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  color: var(--copper-deep);
+  margin-bottom: 22px;
+}
+
+.hero__intro {
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 30ch;
+  margin: 0 auto 24px;
+}
+
+.hero__intro-strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.hero__names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: clamp(34px, 11vw, 46px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.hero__amp {
+  font-family: var(--font-display);
+  font-size: 0.55em;
+  color: var(--copper);
+  line-height: 1;
+  margin: 4px 0;
+}
+
+/* מפריד דקורטיבי */
+.ornament {
+  display: block;
+  width: 190px;
+  max-width: 70%;
+  height: auto;
+  margin: 0 auto;
+  fill: var(--copper);
+  stroke: var(--copper);
+  stroke-width: 1;
+  opacity: 0.75;
+}
+
+.ornament path[d^="M4"],
+.ornament path[d^="M134"] { stroke-linecap: round; }
+
+.ornament--small { width: 150px; opacity: 0.5; }
+
+/* ---------- פרטי האירוע ---------- */
+.details { text-align: center; }
+
+.details__row { padding: 4px 0; }
+
+.details__label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--copper);
+  margin-bottom: 8px;
+}
+
+.details__date {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.details__date-greg {
+  font-size: 15px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin-top: 2px;
+}
+
+.details__venue {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.details__address {
+  font-size: 15px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.details__times { font-size: 16px; }
+.details__times strong { font-weight: 600; }
+
+.details__times-sep {
+  color: var(--sand-line);
+  margin: 0 8px;
+}
+
+.details__divider {
+  height: 1px;
+  margin: 20px auto;
+  width: 70%;
+  background: linear-gradient(90deg, transparent, var(--sand-line), transparent);
+}
+
+/* ---------- כפתורים ---------- */
+.btn-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 52px;
+  padding: 13px 24px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn:focus-visible {
+  outline: 2px solid var(--copper-deep);
+  outline-offset: 3px;
+}
+
+.btn--block { width: 100%; }
+
+.btn__icon {
+  width: 21px;
+  height: 21px;
+  flex: none;
+  fill: currentColor;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--copper) 0%, var(--copper-deep) 100%);
+  color: #FFF9F2;
+  box-shadow: 0 6px 18px rgba(140, 90, 56, 0.28);
+}
+
+.btn--primary:hover { box-shadow: 0 8px 22px rgba(140, 90, 56, 0.36); }
+
+.btn--secondary {
+  background: transparent;
+  border-color: var(--copper);
+  color: var(--copper-deep);
+}
+
+.btn--secondary:hover { background: var(--copper-soft); }
+
+/* כפתור מנוטרל (כתובת עדיין לא הוזנה) */
+.btn[aria-disabled="true"] {
+  opacity: 0.4;
+  pointer-events: none;
+  filter: grayscale(0.4);
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  padding: 6px 4px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--copper-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.nav-note {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---------- משפט סוגר ---------- */
+.closing {
+  font-family: var(--font-display);
+  font-size: 20px;
+  text-align: center;
+  color: var(--copper-deep);
+  margin: 30px auto 34px;
+  max-width: 26ch;
+  line-height: 1.5;
+}
+
+/* ---------- כותרות סקשן ---------- */
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-text {
+  text-align: center;
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.section-hint {
+  text-align: center;
+  font-size: 14.5px;
+  color: var(--copper-deep);
+  background: var(--copper-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 20px;
+}
+
+/* ---------- מתנה ---------- */
+.gift {
+  background: linear-gradient(180deg, var(--surface) 0%, #FDF8F1 100%);
+}
+
+.gift .section-text { margin-bottom: 20px; }
+
+.btn-row--gift { margin-bottom: 4px; }
+
+.btn--gift {
+  min-height: 50px;
+  font-size: 16.5px;
+}
+
+.btn--bit {
+  background: #00AEEF;
+  color: #FFFFFF;
+  box-shadow: 0 5px 14px rgba(0, 174, 239, 0.25);
+}
+
+.gift__fallback {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--sand-line);
+  text-align: center;
+}
+
+/* ההערה רלוונטית רק לדסקטופ — בנייד הקישור פשוט פותח את האפליקציה */
+.gift__hint {
+  display: none;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.gift__phone {
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.gift__phone strong {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  direction: ltr;
+  display: inline-block;
+}
+
+.copy-feedback {
+  display: block;
+  min-height: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--success);
+}
+
+/* ---------- שדה טקסט ---------- */
+.field { margin-bottom: 16px; }
+
+.field__label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.field__optional {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.field__input {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 15px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--sand);
+  border: 1.5px solid var(--sand-line);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.field__input::placeholder { color: #B5A697; }
+
+.field__input:focus {
+  outline: none;
+  background: #FFFFFF;
+  border-color: var(--copper);
+}
+
+/* ---------- תצוגה מקדימה ---------- */
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 10px;
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+
+.thumbs:empty { margin: 0; }
+
+.thumb {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--sand-line);
+  background: var(--sand-deep);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumb__remove {
+  position: absolute;
+  top: 4px;
+  inset-inline-end: 4px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(58, 46, 38, 0.72);
+  color: #FFFFFF;
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.thumb__remove:hover { background: rgba(58, 46, 38, 0.9); }
+
+/* ---------- הודעות ---------- */
+.msg {
+  margin-top: 14px;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  text-align: center;
+}
+
+.msg--error {
+  color: var(--danger);
+  background: rgba(166, 64, 47, 0.08);
+  border: 1px solid rgba(166, 64, 47, 0.2);
+}
+
+.msg br { content: ""; }
+
+/* ---------- כפתור העלאה ומצב טעינה ---------- */
+#upload-btn { margin-top: 18px; }
+
+.progress {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.spinner {
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 12px;
+  border: 3px solid var(--sand-line);
+  border-top-color: var(--copper);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.progress__status {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.progress__track {
+  width: 100%;
+  height: 8px;
+  background: var(--sand-deep);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress__fill {
+  width: 0%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--copper), var(--copper-deep));
+  transition: width 0.35s ease;
+}
+
+/* ---------- מצב הצלחה ---------- */
+#success-state { text-align: center; }
+
+.success__title { color: var(--success); }
+
+#success-state .section-text { margin-bottom: 22px; }
+
+/* ---------- פוטר ---------- */
+.footer {
+  text-align: center;
+  padding-top: 14px;
+}
+
+.footer__text {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* ---------- אנימציית כניסה ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- טאבלט ומעלה ---------- */
+@media (min-width: 768px) {
+  body { font-size: 18px; }
+
+  .page { padding: 60px 24px 60px; }
+
+  .card { padding: 36px 34px; }
+
+  .hero__eyebrow { font-size: 16px; }
+
+  .hero__intro { font-size: 18px; max-width: 38ch; }
+
+  .hero__names { font-size: 52px; }
+
+  .details__date { font-size: 26px; }
+
+  .details__venue { font-size: 23px; }
+
+  .btn-row {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .btn-row .btn { flex: 1 1 0; max-width: 260px; }
+
+  .btn--block { width: 100%; max-width: none; }
+
+  .closing { font-size: 23px; }
+
+  .section-title { font-size: 27px; }
+
+  .gift__hint { display: block; }
+}
+
+/* ---------- העדפת תנועה מופחתת ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal { opacity: 1; transform: none; }
+
+  .spinner {
+    animation: none;
+    border-top-color: var(--copper);
+  }
+}
