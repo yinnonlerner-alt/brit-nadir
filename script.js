@@ -9,7 +9,7 @@ const CONFIG = {
 
   /* --- Google Apps Script --- */
   // ה-URL שמתקבל אחרי Deploy של ה-Web App (מסתיים ב-/exec)
-  WEB_APP_URL: 'PASTE_YOUR_WEB_APP_URL_HERE',
+  WEB_APP_URL: 'https://script.google.com/macros/s/AKfycbxux6FUGVrqjjvuScmnUvaxySfWNvEqIZ5JVmfxXr_XDZe5GmWRrQW5S702VgbgokWA/exec',
   // חייב להיות זהה לערך UPLOAD_TOKEN שב-Code.gs
   UPLOAD_TOKEN: 'brit-nadir-2026',
 
