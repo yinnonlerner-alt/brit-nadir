@@ -14,16 +14,16 @@ const CONFIG = {
   UPLOAD_TOKEN: 'brit-nadir-2026',
 
   /* --- פרטי האירוע --- */
-  VENUE_NAME:     '',   // למשל: 'אולמי הגן הקסום'  (ריק = נשאר ה-placeholder בדף)
-  VENUE_ADDRESS:  '',   // כתובת מלאה לניווט, למשל: 'הרצל 12, פתח תקווה'
+  VENUE_NAME:     'בית הכנסת האשכנזי',
+  VENUE_ADDRESS:  'ניצן',
   RECEPTION_TIME: '16:30',
   CEREMONY_TIME:  '17:00',
 
   /* --- ניווט (אופציונלי) --- */
   // אם משאירים ריק — הקישור נבנה אוטומטית מ-VENUE_ADDRESS.
   // אפשר להדביק כאן קישור מדויק שהעתקתם מהאפליקציה עצמה.
-  WAZE_URL:        '',
-  GOOGLE_MAPS_URL: '',
+  WAZE_URL:        'https://waze.com/ul/hsv8ss41sg',
+  GOOGLE_MAPS_URL: 'https://maps.app.goo.gl/3oy57u2kqjJRajBz5',
 
   /* --- מתנה --- */
   // ⚠️ חשוב: להדביק כאן את "קישור התשלום האישי" מתוך האפליקציה בלבד
@@ -96,7 +96,8 @@ function setupNavigation() {
   const mapsUrl = CONFIG.GOOGLE_MAPS_URL ||
     (destination ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}` : '');
 
-  applyNavLink(wazeBtn, wazeUrl);
+  // קישור waze.com/ul הוא Universal Link — טאב חדש שובר את פתיחת האפליקציה
+  applyNavLink(wazeBtn, wazeUrl, false);
   applyNavLink(mapsBtn, mapsUrl);
 
   // אין עדיין יעד — מסמנים את הכפתורים כלא-פעילים במקום לשלוח לשומקום
@@ -104,12 +105,13 @@ function setupNavigation() {
   if (!wazeUrl && !mapsUrl) show(navNote); else hide(navNote);
 }
 
-function applyNavLink(btn, url) {
+function applyNavLink(btn, url, openInNewTab = true) {
   if (!btn) return;
 
   if (url) {
     btn.href = url;
-    btn.target = '_blank';
+    if (openInNewTab) btn.target = '_blank';
+    else btn.removeAttribute('target');
     btn.removeAttribute('aria-disabled');
   } else {
     btn.removeAttribute('href');
